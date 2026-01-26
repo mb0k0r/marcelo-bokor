@@ -14,22 +14,33 @@ export const metadata: Metadata = {
   description:
     'Full-stack developer building SaaS platforms, AI automation, and custom tools for founders and CTOs.',
   generator: 'v0.app',
+  openGraph: {
+    title: 'Marcelo Bokor - Full-Stack Developer',
+    description:
+      'Full-stack developer building SaaS platforms, AI automation, and custom tools for founders and CTOs.',
+    images: [
+      {
+        url: '/og.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Marcelo Bokor',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Marcelo Bokor - Full-Stack Developer',
+    description:
+      'Full-stack developer building SaaS platforms, AI automation, and custom tools for founders and CTOs.',
+    images: ['/og.svg'],
+  },
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
       {
         url: '/icon.svg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
   },
 }
 
