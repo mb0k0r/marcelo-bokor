@@ -38,9 +38,9 @@ export function ProjectsSection({ locale }: ProjectsSectionProps) {
               >
                 <div className="space-y-4">
                   {project.videoSrc ? (
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-border/50 bg-black/40">
+                    <div className="relative aspect-video overflow-hidden rounded-xl border border-border/50 bg-black/60">
                       <video
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain"
                         src={project.videoSrc}
                         autoPlay
                         muted
