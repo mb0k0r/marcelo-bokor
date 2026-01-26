@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import type { Locale } from '@/lib/content'
 
 type NavigationProps = {
@@ -21,7 +21,7 @@ type NavigationProps = {
 
 export function Navigation({ locale, navigation }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false)
-  const router = useRouter()
+  // const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
