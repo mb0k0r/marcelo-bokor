@@ -31,7 +31,7 @@ export function ServicesSection({ locale }: ServicesSectionProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <Card
-              key={index}
+              key={service.title}
               className="group p-8 border border-border bg-gradient-to-br from-card via-card/80 to-primary/10 hover:border-primary/50 transition-all duration-300 motion-safe:animate-fade-in-up"
               style={{ animationDelay: `${index * 120}ms` }}
             >

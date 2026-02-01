@@ -25,7 +25,7 @@ export function ExperienceSection({ locale }: ExperienceSectionProps) {
         <div className="space-y-12">
           {experience.map((exp, index) => (
             <div
-              key={index}
+              key={`${exp.company}-${exp.period}`}
               className="relative pl-8 border-l-2 border-border motion-safe:animate-fade-in-up"
               style={{ animationDelay: `${index * 120}ms` }}
             >
@@ -44,9 +44,9 @@ export function ExperienceSection({ locale }: ExperienceSectionProps) {
                 <p className="text-muted-foreground leading-relaxed">{exp.description}</p>
 
                 <ul className="space-y-2 text-muted-foreground">
-                  {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-primary mt-1">{'>'}</span>
+                  {exp.achievements.map((achievement) => (
+                    <li key={achievement} className="flex items-start gap-2">
+                      <span className="w-4 shrink-0 text-center text-primary leading-relaxed">{'>'}</span>
                       <span className="leading-relaxed">{achievement}</span>
                     </li>
                   ))}

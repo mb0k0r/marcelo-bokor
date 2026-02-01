@@ -27,7 +27,7 @@ export function ProcessSection({ locale }: ProcessSectionProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {content.processSteps.map((step, index) => (
             <Card
-              key={index}
+              key={step.step}
               className="relative p-6 border border-border bg-card motion-safe:animate-fade-in-up"
               style={{ animationDelay: `${index * 120}ms` }}
             >

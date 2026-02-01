@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { useEffect, useState } from 'react'
-// import { useRouter } from 'next/navigation'
+import { useEffect, useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import type { Locale } from '@/lib/content'
 
 type NavigationProps = {
@@ -21,20 +21,29 @@ type NavigationProps = {
 
 export function Navigation({ locale, navigation }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false)
-  // const router = useRouter()
+  const [optimisticLocale, setOptimisticLocale] = useState(locale)
+  const [isPending, startTransition] = useTransition()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    setOptimisticLocale(locale)
+  }, [locale])
+
   const setLocale = (nextLocale: Locale) => {
-    if (nextLocale === locale) return
-    document.cookie = `locale=${nextLocale}; path=/; max-age=31536000`
-    window.location.reload()
+    if (nextLocale === optimisticLocale) return
+    document.cookie = `locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`
+    setOptimisticLocale(nextLocale)
+    startTransition(() => {
+      router.refresh()
+    })
   }
 
   return (
@@ -77,12 +86,6 @@ export function Navigation({ locale, navigation }: NavigationProps) {
                 {navigation.work}
               </a>
               <a
-                href="#process"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {navigation.process}
-              </a>
-              <a
                 href="#testimonials"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
@@ -102,23 +105,25 @@ export function Navigation({ locale, navigation }: NavigationProps) {
             <div className="flex items-center gap-1 rounded-full border border-border bg-card/40 p-1">
               <Button
                 type="button"
-                variant={locale === 'en' ? 'secondary' : 'ghost'}
+                variant={optimisticLocale === 'en' ? 'secondary' : 'ghost'}
                 size="sm"
                 className="h-7 px-2 text-xs"
                 onClick={() => setLocale('en')}
-                aria-pressed={locale === 'en'}
+                aria-pressed={optimisticLocale === 'en'}
                 aria-label={navigation.switchToEnglish}
+                disabled={isPending}
               >
                 EN
               </Button>
               <Button
                 type="button"
-                variant={locale === 'es-419' ? 'secondary' : 'ghost'}
+                variant={optimisticLocale === 'es-419' ? 'secondary' : 'ghost'}
                 size="sm"
                 className="h-7 px-2 text-xs"
                 onClick={() => setLocale('es-419')}
-                aria-pressed={locale === 'es-419'}
+                aria-pressed={optimisticLocale === 'es-419'}
                 aria-label={navigation.switchToSpanish}
+                disabled={isPending}
               >
                 ES
               </Button>

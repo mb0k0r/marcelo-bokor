@@ -246,7 +246,7 @@ const projectsEs: ProjectItem[] = [
   },
   {
     title: 'TALD',
-    problem: 'El front legado y la infraestructura limitaban la velocidad de entrega.',
+    problem: 'El front heredado y la infraestructura limitaban la velocidad de entrega.',
     solution: 'Rehice el sitio desde cero en Next.js con foco en performance y escalabilidad.',
     result: 'Sitio en producción más rápido, confiable y listo para crecer.',
     tech: ['Next.js', 'React', 'MUI', 'Node.js'],
@@ -302,7 +302,7 @@ const sharedExperience: ExperienceItem[] = [
     achievements: [
       'Led frontend architecture for trading management dashboards with AWS integrations, high-performance grids, and reactive charting in Next.js.',
       'Built a medical management platform for Pasley Hill and Patriot Medical Distributors with Svelte + Node.js, deployed on AWS.',
-      'Designed a fully automated hiring platform, boosting hiring efficiency by 300%+ with end-to-end workflow automation.',
+      'Co-designed with Niuro an AI-powered hiring platform, improving hiring efficiency by 300%+ through end-to-end automation.',
     ],
   },
   {
@@ -357,7 +357,7 @@ const sharedExperience: ExperienceItem[] = [
     description:
       'Built internal tools with .NET Core and Google APIs to reduce manual workflows.',
     achievements: [
-      'Improved client management by streamlining administrative workflows.',
+      'Built a Blazor web platform for Coteminas, delivering dashboards and key data visualizations to support business decision-making.',
       'Saved 10+ hours per week by automating recurring operational tasks.',
       'Built mobile and SSO tools with Blazor/Xamarin to unify access and logging.',
     ],
@@ -396,7 +396,7 @@ const experienceEs: ExperienceItem[] = [
     achievements: [
       'Lidere la arquitectura frontend para dashboards de trading con integraciones en AWS, grillas de alto rendimiento y charting reactivo en Next.js.',
       'Construí una plataforma médica para Pasley Hill y Patriot Medical Distributors con Svelte + Node.js, desplegada en AWS.',
-      'Diseñé una plataforma de hiring totalmente automatizada, mejorando la eficiencia en 300%+ con automatizacion end-to-end.',
+      'Diseñé junto a Niuro una plataforma de hiring potenciada por IA, mejorando la eficiencia en 300%+ con automatización end-to-end.',
     ],
   },
   {
@@ -406,7 +406,7 @@ const experienceEs: ExperienceItem[] = [
     description:
       'Construí y mantuve vokal.io con Next.js y Tailwind CSS, mejorando performance y UX.',
     achievements: [
-      'Desarrollé una plataforma de turnos para WellNow Urgent Care para reducir colas y mejorar el flujo en temporada de gripe.',
+      'Desarrollé una plataforma de turnos para WellNow Urgent Care para gestionar mejor a los pacientes durante la temporada de gripe.',
       'Integré APIs sociales y analíticas (GA, Supermetrics) con Python y Next.js; desplegado en AWS.',
     ],
   },
@@ -415,10 +415,10 @@ const experienceEs: ExperienceItem[] = [
     role: 'Full Stack Engineer (Remoto - Atlanta, GA)',
     company: 'TALD',
     description:
-      'Rehice la plataforma core con Next.js, MUI, Node.js y MongoDB para mejorar escalabilidad.',
+      'Rehicimos la plataforma core con Next.js, MUI, Node.js y MongoDB para mejorar escalabilidad.',
     achievements: [
-      'Implementé flujos con Stripe y Customer.io, automatizando mas del 70% de la comunicacion.',
-      'Desarrollé un panel interno que redujo tickets de soporte en 44%.',
+      'Implementamos flujos con Stripe y Customer.io, automatizando mas del 70% de la comunicacion.',
+      'Desarrollamos un panel interno que redujo tickets de soporte en 44%.',
     ],
   },
   {
@@ -450,7 +450,7 @@ const experienceEs: ExperienceItem[] = [
     description:
       'Construí herramientas internas con .NET Core y Google APIs para reducir trabajo manual.',
     achievements: [
-      'Mejoré la gestion de clientes con flujos administrativos mas eficientes.',
+      'Desarrollé con Blazor una plataforma web para Coteminas, con dashboards y visualizaciones clave para mejorar la toma de decisiones del negocio.',
       'Ahorre 10+ horas semanales automatizando tareas recurrentes.',
       'Construí herramientas mobile y SSO con Blazor/Xamarin para unificar acceso y logging.',
     ],
@@ -813,7 +813,7 @@ const content: Record<Locale, ContentBundle> = {
     contact: {
       headline: '¿Listo para construir algo grande?',
         description:
-          'Disponible para proyectos exclusivos. Si necesitas un socio técnico para tu SaaS, automatizar flujos o escalar operaciones, hablemos.',
+          'Disponible para proyectos exclusivos. Si necesitás un socio técnico para tu SaaS, automatizar flujos o mejorar cómo opera tu negocio, hablemos.',
       email: 'dev.mbokor@gmail.com',
       calendly: 'https://calendly.com/dev-mbokor/30min',
       emailCta: 'Escribime',

@@ -51,14 +51,14 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies()
   const cookieLocale = cookieStore.get('locale')?.value
-  const locale: Locale = cookieLocale === 'es-419' ? 'es-419' : 'en'
+  const locale: Locale = cookieLocale === 'en' ? 'en' : 'es-419'
   const lang = locale === 'es-419' ? 'es' : 'en'
 
   return (
     <html lang={lang} className="dark">
       <body className={`font-sans antialiased`}>
         {children}
-        <Analytics />
+        {process.env.NODE_ENV === 'production' ? <Analytics /> : null}
       </body>
     </html>
   )

@@ -27,7 +27,7 @@ export function TestimonialsSection({ locale }: TestimonialsSectionProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <Card
-              key={index}
+              key={`${testimonial.name}-${testimonial.role}`}
               className="p-6 border border-border bg-card motion-safe:animate-fade-in-up"
               style={{ animationDelay: `${index * 120}ms` }}
             >

@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { ProjectVideo } from '@/components/project-video'
 import type { Locale } from '@/lib/content'
 import { getContent } from '@/lib/content'
 
@@ -38,19 +39,7 @@ export function ProjectsSection({ locale }: ProjectsSectionProps) {
               >
                 <div className="space-y-4">
                   {project.videoSrc ? (
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-border/50 bg-black/60">
-                      <video
-                        className="h-full w-full object-contain"
-                        src={project.videoSrc}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        controls
-                        poster={project.videoPoster}
-                        preload="none"
-                      />
-                    </div>
+                    <ProjectVideo src={project.videoSrc} poster={project.videoPoster} />
                   ) : null}
                   <div className="space-y-2">
                     <h3 className="text-2xl font-semibold text-foreground">{project.title}</h3>
