@@ -39,10 +39,9 @@ export function Navigation({ locale, navigation }: NavigationProps) {
 
   const setLocale = (nextLocale: Locale) => {
     if (nextLocale === optimisticLocale) return
-    document.cookie = `locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`
     setOptimisticLocale(nextLocale)
     startTransition(() => {
-      router.refresh()
+      router.push(nextLocale === 'en' ? '/en' : '/es')
     })
   }
 

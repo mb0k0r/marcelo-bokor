@@ -9,6 +9,7 @@ type ClientsSectionProps = {
 export function ClientsSection({ locale }: ClientsSectionProps) {
   const content = getContent(locale)
   const clients = content.clients
+  const mobileClients = clients.filter((client) => client.name !== 'Loyal')
 
   return (
     <section
@@ -22,7 +23,44 @@ export function ClientsSection({ locale }: ClientsSectionProps) {
         </div>
       </div>
 
-      <div className="relative overflow-hidden motion-reduce:hidden px-4 sm:px-6 lg:px-8">
+      <div className="md:hidden max-w-7xl mx-auto grid grid-cols-2 gap-3 px-4 sm:px-6">
+        {mobileClients.map((client) => (
+          <div
+            key={`${client.name}-mobile`}
+            className="flex items-center justify-center rounded-xl border border-border/60 bg-card/50 px-3 py-4"
+          >
+            {client.href ? (
+              <a
+                href={client.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={client.name}
+                className="flex items-center justify-center w-full"
+              >
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={client.width}
+                  height={client.height}
+                  sizes="(max-width: 768px) 40vw, 180px"
+                  className="h-10 w-auto rounded-full object-contain opacity-95"
+                />
+              </a>
+            ) : (
+              <Image
+                src={client.logo}
+                alt={client.name}
+                width={client.width}
+                height={client.height}
+                sizes="(max-width: 768px) 40vw, 180px"
+                className="h-10 w-auto rounded-full object-contain opacity-95"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="relative hidden md:block overflow-hidden motion-reduce:hidden px-4 sm:px-6 lg:px-8">
         <div
           className="group flex animate-marquee gap-12 sm:gap-16 [animation-duration:45s] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           tabIndex={0}
@@ -66,7 +104,7 @@ export function ClientsSection({ locale }: ClientsSectionProps) {
         </div>
       </div>
 
-      <div className="hidden motion-reduce:grid max-w-7xl mx-auto grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8">
+      <div className="hidden md:grid motion-safe:hidden max-w-7xl mx-auto grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8">
         {clients.map((client) => (
           <div
             key={client.name}

@@ -19,7 +19,7 @@ export function HomePage({ locale }: HomePageProps) {
   const content = getContent(locale)
 
   return (
-    <div className="relative min-h-screen bg-background">
+    <div lang={locale === 'es-419' ? 'es' : 'en'} className="relative min-h-screen bg-background">
       <Navigation locale={locale} navigation={content.navigation} />
       <main className="relative">
         <HeroSection

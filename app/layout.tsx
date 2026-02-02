@@ -3,8 +3,6 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import { cookies } from 'next/headers'
-import type { Locale } from '@/lib/content'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -44,18 +42,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const cookieStore = await cookies()
-  const cookieLocale = cookieStore.get('locale')?.value
-  const locale: Locale = cookieLocale === 'en' ? 'en' : 'es-419'
-  const lang = locale === 'es-419' ? 'es' : 'en'
-
   return (
-    <html lang={lang} className="dark">
+    <html lang="es" className="dark">
       <body className={`font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' ? <Analytics /> : null}

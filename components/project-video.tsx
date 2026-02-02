@@ -10,6 +10,7 @@ type ProjectVideoProps = {
 export function ProjectVideo({ src, poster }: ProjectVideoProps) {
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
+  const hasRequestedLoadRef = useRef(false)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -32,11 +33,21 @@ export function ProjectVideo({ src, poster }: ProjectVideoProps) {
     if (!video) return
 
     if (isVisible) {
+      if (!hasRequestedLoadRef.current) {
+        video.load()
+        hasRequestedLoadRef.current = true
+      }
       void video.play().catch(() => {})
       return
     }
     video.pause()
   }, [isVisible])
+
+  const handleCanPlay = () => {
+    const video = videoRef.current
+    if (!video || !isVisible) return
+    void video.play().catch(() => {})
+  }
 
   return (
     <div ref={wrapperRef} className="relative aspect-video overflow-hidden rounded-xl border border-border/50 bg-black/60">
@@ -51,6 +62,8 @@ export function ProjectVideo({ src, poster }: ProjectVideoProps) {
         controls
         poster={poster}
         preload="metadata"
+        onCanPlay={handleCanPlay}
+        onLoadedData={handleCanPlay}
       />
     </div>
   )
