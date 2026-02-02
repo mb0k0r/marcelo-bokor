@@ -104,7 +104,7 @@ export function ClientsSection({ locale }: ClientsSectionProps) {
         </div>
       </div>
 
-      <div className="hidden md:grid motion-safe:hidden max-w-7xl mx-auto grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8">
+      <div className="hidden motion-reduce:md:grid max-w-7xl mx-auto grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-8">
         {clients.map((client) => (
           <div
             key={client.name}
